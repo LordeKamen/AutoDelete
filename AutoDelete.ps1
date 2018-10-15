@@ -5,7 +5,6 @@ $timeDays = 7
 $timeObject = new-timespan -Days $timeDays
 $files = Get-ChildItem $PathToDelete -Recurse -File
 
-
 # Delete files that are older than the time specified in $timeDays.
 foreach ($file in $files) {
     $file_age = (Get-Item $file.FullName).CreationTime
