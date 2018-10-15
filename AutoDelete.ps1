@@ -6,7 +6,7 @@ $timeObject = new-timespan -Days $timeDays
 $files = Get-ChildItem $PathToDelete -Recurse -File
 
 
-# Delete files that are older than the time specified in $timeDays
+# Delete files that are older than the time specified in $timeDays.
 foreach ($file in $files) {
     $file_age = (Get-Item $file.FullName).CreationTime
     if (((Get-Date) - $file_age) -gt $timeObject) {
@@ -15,7 +15,7 @@ foreach ($file in $files) {
     }
 }
 
-# Delete empty directories
+# Delete empty directories.
 do {
   $dirs = Get-ChildItem $PathToDelete -directory -recurse | Where-Object { (Get-ChildItem $_.fullName).count -eq 0 } | Select-Object -expandproperty FullName
   $dirs | Foreach-Object { Remove-Item $_ -Recurse -Force }
